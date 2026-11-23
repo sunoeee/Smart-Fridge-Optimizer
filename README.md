@@ -1,16 +1,16 @@
 # Smart Fridge Optimizer (Meal Planner)
 
-Helping college students without a college meal plan eat well.
-- Tracks what food is in your kitchen
-- Estimates when each item expires
-- Suggests recipes that use food before it goes bad
+helping college students without a college meal plan eat well :)
+- tracks what food is in your kitchen
+- estimates when each item expires
+- suggests recipes that use food before it goes bad
 
 ## Repo layout
 
 | Folder | What it is | Status |
 |---|---|---|
-| [`backend/`](backend/) | Java / Spring Boot REST API on PostgreSQL. The system of record. | Working |
-| [`ai-service-python/`](ai-service-python/) | Python / FastAPI service that parses free text and receipts into fridge items | Planned |
+| [`backend/`](backend/) | Java / Spring Boot REST API on PostgreSQL | Working |
+| [`ai-service-python/`](ai-service-python/) | Python FastAPI service that parses free text and receipts into fridge items | In-Progress |
 
 ## Architecture
 
@@ -27,20 +27,19 @@ and saves the result itself.
 
 ## CURRENT FEATURES
 
-- Ingredient catalog, fridge inventory, and recipes over a REST API (uses 12 endpoints)
-- Expiration estimates when you don't enter a date, based on shelf life and storage
-- Recipe suggestions ranked by ingredient coverage and how soon ingredients expire
+- ingredient catalog, fridge inventory, and recipes over a REST API (uses 12 endpoints)
+- can estimate expiration dates when you don't enter a date, based on shelf life and storage
+- recipe suggestions ranked by ingredient coverage and how soon ingredients expire
 - "Cook a recipe": all-or-nothing, uses the oldest ingredients first, returns a shopping list
   (HTTP 409) if you don't have enough ingredients for the recipe
-- PostgreSQL schema versioned with Flyway
-- unit tests plus integration tests against a
+- PostgreSQL schema is versioned using Flyway
+- there are unit tests plus integration tests against a
   real Postgres (Testcontainers, Docker)
 
-See [`backend/README.md`](backend/README.md) for setup, the full API, and the design
-decisions behind it.
+Also see [`backend/README.md`](backend/README.md) 
 
 ## PLANNED:
 
 - Python text/receipt parser, called from the backend
 - Web frontend
-- Unit conversion (grams ↔ cups), user accounts, weekly meal planning
+- Unit conversion (such as grams <-> cups), user accounts, weekly meal planning
